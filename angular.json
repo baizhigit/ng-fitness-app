@@ -1,35 +1,39 @@
 {
   "version": 1,
   "projects": {
-    "ng-fitness": {
+    "fitness-app": {
       "projectType": "application",
-      "schematics": {},
-      "root": "apps/ng-fitness",
-      "sourceRoot": "apps/ng-fitness/src",
-      "prefix": "myworkspace",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/fitness-app",
+      "sourceRoot": "apps/fitness-app/src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/ng-fitness",
-            "index": "apps/ng-fitness/src/index.html",
-            "main": "apps/ng-fitness/src/main.ts",
-            "polyfills": "apps/ng-fitness/src/polyfills.ts",
-            "tsConfig": "apps/ng-fitness/tsconfig.app.json",
+            "outputPath": "dist/apps/fitness-app",
+            "index": "apps/fitness-app/src/index.html",
+            "main": "apps/fitness-app/src/main.ts",
+            "polyfills": "apps/fitness-app/src/polyfills.ts",
+            "tsConfig": "apps/fitness-app/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "apps/ng-fitness/src/favicon.ico",
-              "apps/ng-fitness/src/assets"
+              "apps/fitness-app/src/favicon.ico",
+              "apps/fitness-app/src/assets"
             ],
-            "styles": ["apps/ng-fitness/src/styles.css"],
+            "styles": ["apps/fitness-app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/ng-fitness/src/environments/environment.ts",
-                  "with": "apps/ng-fitness/src/environments/environment.prod.ts"
+                  "replace": "apps/fitness-app/src/environments/environment.ts",
+                  "with": "apps/fitness-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -54,55 +58,55 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-fitness:build"
+            "browserTarget": "fitness-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-fitness:build:production"
+              "browserTarget": "fitness-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-fitness:build"
+            "browserTarget": "fitness-app:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/ng-fitness/tsconfig.app.json",
-              "apps/ng-fitness/tsconfig.spec.json"
+              "apps/fitness-app/tsconfig.app.json",
+              "apps/fitness-app/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/ng-fitness/**"]
+            "exclude": ["**/node_modules/**", "!apps/fitness-app/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/ng-fitness/jest.config.js",
-            "tsConfig": "apps/ng-fitness/tsconfig.spec.json",
-            "setupFile": "apps/ng-fitness/src/test-setup.ts"
+            "jestConfig": "apps/fitness-app/jest.config.js",
+            "tsConfig": "apps/fitness-app/tsconfig.spec.json",
+            "setupFile": "apps/fitness-app/src/test-setup.ts"
           }
         }
       }
     },
-    "ng-fitness-e2e": {
-      "root": "apps/ng-fitness-e2e",
-      "sourceRoot": "apps/ng-fitness-e2e/src",
+    "fitness-app-e2e": {
+      "root": "apps/fitness-app-e2e",
+      "sourceRoot": "apps/fitness-app-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/ng-fitness-e2e/cypress.json",
-            "tsConfig": "apps/ng-fitness-e2e/tsconfig.e2e.json",
-            "devServerTarget": "ng-fitness:serve"
+            "cypressConfig": "apps/fitness-app-e2e/cypress.json",
+            "tsConfig": "apps/fitness-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "fitness-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ng-fitness:serve:production"
+              "devServerTarget": "fitness-app:serve:production"
             }
           }
         },
@@ -110,8 +114,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "tslint",
-            "tsConfig": ["apps/ng-fitness-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/ng-fitness-e2e/**"]
+            "tsConfig": ["apps/fitness-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/fitness-app-e2e/**"]
           }
         }
       }
@@ -127,7 +131,10 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
     }
   },
-  "defaultProject": "ng-fitness"
+  "defaultProject": "fitness-app"
 }

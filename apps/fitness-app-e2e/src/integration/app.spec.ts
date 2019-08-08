@@ -1,9 +1,9 @@
 import { getGreeting } from '../support/app.po';
 
-describe('ng-fitness', () => {
+describe('fitness-app', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    getGreeting().contains('Welcome to ng-fitness!');
+    getGreeting().contains('Welcome to fitness-app!');
   });
 });

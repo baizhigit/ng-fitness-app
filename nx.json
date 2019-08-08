@@ -1,5 +1,5 @@
 {
-  "npmScope": "myworkspace",
+  "npmScope": "workspace",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -12,6 +12,12 @@
       "tags": []
     },
     "ng-fitness": {
+      "tags": []
+    },
+    "fitness-app-e2e": {
+      "tags": []
+    },
+    "fitness-app": {
       "tags": []
     }
   }
