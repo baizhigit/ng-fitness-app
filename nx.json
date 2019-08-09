@@ -8,12 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "ng-fitness-e2e": {
-      "tags": []
-    },
-    "ng-fitness": {
-      "tags": []
-    },
     "fitness-app-e2e": {
       "tags": []
     },
