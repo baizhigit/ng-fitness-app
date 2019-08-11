@@ -3,12 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 
+// shared modules
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    HttpClientModule,
+    AuthRoutingModule,
+    SharedModule.forRoot()
   ]
 })
-export class AuthModule { }
+export class AuthModule {}

@@ -11,12 +11,14 @@ import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 
 // components
+import { AppNavComponent } from './components/app-nav/app-nav.component';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
 
 //routes
 export const routes: Routes = [];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppNavComponent, AppHeaderComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),

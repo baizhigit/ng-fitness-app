@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$yWIsaWenb4uKtjjBslL5hejjWOTFULZh2Zhvzq7a7mX8iN/dvS89m",
+      "id": 1
+    },
+    {
+      "email": "vanid@mail.com",
+      "password": "$2a$10$bLEm70a1iOvjuNCn6.Gih.Nj0WPIfHFP472oLREf/MR0/KyNyGih2",
+      "authenticated": true,
+      "id": 2
+    },
+    {
+      "email": "adad@fdsfd",
+      "password": "$2a$10$T7gEqVYO47Q/804LxzBfbuS6lgxoboDp86dLaXFvASawN0gB7mkzu",
+      "id": 3
+    },
+    {
+      "email": "second@dasd",
+      "password": "$2a$10$otnwIU0WnYqd7W3hCOxw7eA/tvzq0ebej4.ffpUqmLQ6DN6.CR9kS",
+      "authenticated": true,
+      "id": 4
+    }
+  ]
+}
