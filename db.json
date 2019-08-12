@@ -9,6 +9,16 @@
       "email": "maml@maml.com",
       "password": "$2a$10$QVxThmOyXQIzSUV6nvcJaeihR6ZaIkkuy5ZG2V5P0AZGhKdX9NyQS",
       "id": 2
+    },
+    {
+      "email": "test@test.kz",
+      "password": "$2a$10$RWs9clI6j2pCaAPcpqKdJ.U4yOEPohlzOUBfeu5J2QreKH53z03bu",
+      "id": 3
+    },
+    {
+      "email": "test2@fdsfds",
+      "password": "$2a$10$elVxY7Ow99f8rO4GOa1bl.zDq27fNglOVX.Goy2D5UAGxn0ozIU5.",
+      "id": 4
     }
   ]
 }

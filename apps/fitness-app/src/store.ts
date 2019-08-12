@@ -9,7 +9,7 @@ export interface State {
 }
 
 const state: State = {
-  user: undefined
+  user: { email: null, password: null, authenticated: false }
 };
 
 export class Store {

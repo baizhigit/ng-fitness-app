@@ -6,6 +6,7 @@ import { Store } from 'store';
 
 // feature modules
 import { AuthModule } from './auth/auth.module';
+import { HealthModule } from './health/health.module';
 
 // containers
 import { AppComponent } from './app.component';
@@ -15,14 +16,17 @@ import { AppNavComponent } from './components/app-nav/app-nav.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 
 //routes
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'schedule' }
+];
 
 @NgModule({
   declarations: [AppComponent, AppNavComponent, AppHeaderComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
-    AuthModule
+    AuthModule,
+    HealthModule
   ],
   providers: [Store],
   bootstrap: [AppComponent]

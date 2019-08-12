@@ -3,11 +3,13 @@ import { Store } from 'store';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
+import { Observable } from 'rxjs';
 
 export interface User {
   id?: string;
   email: string;
   password: string;
+  authenticated?: boolean;
 }
 
 @Injectable()
@@ -17,6 +19,10 @@ export class AuthService {
     private store: Store,
     private router: Router
   ) {}
+
+  // get authState() {
+  //   return this.store.select<User>('user').pipe()
+  // }
 
   async registerUser(user: User) {
     if (!user) {
@@ -33,7 +39,7 @@ export class AuthService {
         data => {
           console.log('POST Request is successful ', data);
           this.store.set('user', { ...userObj, authenticated: true });
-          console.log('set store');
+          console.log('set store', this.store.value.user.authenticated);
           this.router.navigate(['/']);
         },
         error => {
@@ -49,7 +55,7 @@ export class AuthService {
         data => {
           console.log('User successfully logged in', data);
           this.store.set('user', { email, password, authenticated: true });
-          console.log('set store');
+          console.log('set store', this.store.value.user.authenticated);
 
           this.router.navigate(['/']);
         },
@@ -61,6 +67,10 @@ export class AuthService {
 
   logoutUser() {
     console.log('... Loggin out');
-    return this.store.set('user', null);
+    return this.store.set('user', {
+      email: null,
+      password: null,
+      authenticated: false
+    });
   }
 }
