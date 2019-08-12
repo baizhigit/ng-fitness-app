@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { AuthService } from 'app/auth/shared/services/auth/auth.service';
 
@@ -14,6 +13,9 @@ import { AuthService } from 'app/auth/shared/services/auth/auth.service';
         <button type="submit">
           Login
         </button>
+        <div class="error" *ngIf="error">
+          {{ error }}
+        </div>
       </auth-form>
     </div>
   `
@@ -21,14 +23,13 @@ import { AuthService } from 'app/auth/shared/services/auth/auth.service';
 export class LoginComponent {
   error: any;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   async loginUser(event: FormGroup) {
     const { email, password } = event.value;
 
     try {
       await this.authService.loginUser(email, password);
-      this.router.navigate(['/']);
     } catch (error) {
       this.error = error.message || error;
     }

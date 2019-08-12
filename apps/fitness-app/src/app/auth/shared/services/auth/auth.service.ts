@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Store } from 'store';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 
 export interface User {
   id?: string;
   email: string;
   password: string;
-  authenticated?: boolean;
 }
 
 @Injectable()
 export class AuthService {
-  isAuthenticated = false;
-
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+    private router: Router
+  ) {}
 
   async registerUser(user: User) {
     if (!user) {
@@ -23,27 +25,42 @@ export class AuthService {
     }
     const userObj: User = {
       email: user.email,
-      password: user.password,
-      authenticated: true
+      password: user.password
     };
-    await this.http.post(`${environment.apiUrl}/register`, userObj).subscribe(
-      data => {
-        console.log('POST Request is successful ', data);
-        this.store.set('user', userObj);
-        console.log('set store');
-        this.isAuthenticated = true;
-      },
-      error => {
-        console.log('Error', error);
-      }
-    );
+    return await this.http
+      .post(`${environment.apiUrl}/register`, userObj)
+      .subscribe(
+        data => {
+          console.log('POST Request is successful ', data);
+          this.store.set('user', { ...userObj, authenticated: true });
+          console.log('set store');
+          this.router.navigate(['/']);
+        },
+        error => {
+          console.error('Error', error);
+        }
+      );
   }
 
-  loginUser(email: string, password: string) {
-    console.log('User loged in', { email, password });
+  async loginUser(email: string, password: string) {
+    return await this.http
+      .post(`${environment.apiUrl}/login`, { email, password })
+      .subscribe(
+        data => {
+          console.log('User successfully logged in', data);
+          this.store.set('user', { email, password, authenticated: true });
+          console.log('set store');
+
+          this.router.navigate(['/']);
+        },
+        error => {
+          return error;
+        }
+      );
   }
 
   logoutUser() {
-    return;
+    console.log('... Loggin out');
+    return this.store.set('user', null);
   }
 }

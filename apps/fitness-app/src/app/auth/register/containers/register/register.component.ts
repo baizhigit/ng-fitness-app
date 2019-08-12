@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { AuthService } from 'app/auth/shared/services/auth/auth.service';
 
@@ -24,7 +23,7 @@ import { AuthService } from 'app/auth/shared/services/auth/auth.service';
 export class RegisterComponent {
   error: any;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   // async registerUser(event: FormGroup) {
   //   const { email, password } = event.value;
@@ -39,7 +38,6 @@ export class RegisterComponent {
   async registerUser(event: FormGroup) {
     try {
       await this.authService.registerUser(event.value);
-      this.router.navigate(['/']);
     } catch (error) {
       this.error = error.message || error;
     }
