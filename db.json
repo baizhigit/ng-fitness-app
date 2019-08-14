@@ -1,24 +1,15 @@
 {
   "users": [
     {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$yWIsaWenb4uKtjjBslL5hejjWOTFULZh2Zhvzq7a7mX8iN/dvS89m",
-      "id": 1
+      "email": "lol@ka",
+      "password": "$2a$10$KJtK92upaSlliVye/OC0N.sGIrWGgmZirbYd4gbtZUOPukevdt38u",
+      "id": "lol@ka"
     },
     {
-      "email": "maml@maml.com",
-      "password": "$2a$10$QVxThmOyXQIzSUV6nvcJaeihR6ZaIkkuy5ZG2V5P0AZGhKdX9NyQS",
-      "id": 2
-    },
-    {
-      "email": "test@test.kz",
-      "password": "$2a$10$RWs9clI6j2pCaAPcpqKdJ.U4yOEPohlzOUBfeu5J2QreKH53z03bu",
-      "id": 3
-    },
-    {
-      "email": "test2@fdsfds",
-      "password": "$2a$10$elVxY7Ow99f8rO4GOa1bl.zDq27fNglOVX.Goy2D5UAGxn0ozIU5.",
-      "id": 4
+      "email": "maml@maml",
+      "password": "$2a$10$0ocbrC8ucjXGq2qFtvPtLeVJCjTo1.JjbgPx7PhFQGYl2PFzylVVC",
+      "id": "maml@maml"
     }
-  ]
+  ],
+  "meals": []
 }

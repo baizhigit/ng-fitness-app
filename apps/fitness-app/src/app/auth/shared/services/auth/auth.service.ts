@@ -6,7 +6,7 @@ import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 export interface User {
-  id?: string;
+  id: string;
   email: string;
   password: string;
   authenticated?: boolean;
@@ -20,16 +20,13 @@ export class AuthService {
     private router: Router
   ) {}
 
-  // get authState() {
-  //   return this.store.select<User>('user').pipe()
-  // }
-
   async registerUser(user: User) {
     if (!user) {
       this.store.set('user', null);
       return;
     }
     const userObj: User = {
+      id: user.email,
       email: user.email,
       password: user.password
     };
@@ -38,8 +35,10 @@ export class AuthService {
       .subscribe(
         data => {
           console.log('POST Request is successful ', data);
-          this.store.set('user', { ...userObj, authenticated: true });
-          console.log('set store', this.store.value.user.authenticated);
+          this.store.set('user', {
+            ...userObj,
+            authenticated: true
+          });
           this.router.navigate(['/']);
         },
         error => {
@@ -55,7 +54,6 @@ export class AuthService {
         data => {
           console.log('User successfully logged in', data);
           this.store.set('user', { email, password, authenticated: true });
-          console.log('set store', this.store.value.user.authenticated);
 
           this.router.navigate(['/']);
         },
